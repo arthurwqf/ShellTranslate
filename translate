@@ -1,10 +1,10 @@
 #bin/bash
 
 h="http://api.fanyi.baidu.com/api/trans/vip/translate"
-appId="20170711000064064"
+appId="1111111111111111"
 q="$1"
 salt="123"
-sKey="rzLKjET8nORq0dPPipER"
+sKey="2222222222222222"
 sign1=${appId}${q}${salt}${sKey}
 
 sign=`echo $sign1|tr -d '\n'|md5sum|cut -d ' ' -f1`
