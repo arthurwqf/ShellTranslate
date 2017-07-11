@@ -1,0 +1,15 @@
+#bin/bash
+
+h="http://api.fanyi.baidu.com/api/trans/vip/translate"
+appId="20170711000064064"
+q="$1"
+salt="123"
+sKey="rzLKjET8nORq0dPPipER"
+sign1=${appId}${q}${salt}${sKey}
+
+sign=`echo $sign1|tr -d '\n'|md5sum|cut -d ' ' -f1`
+result=$(curl -s -d "q=$1&from=en&to=zh&appid=$appId&salt=$salt&sign=$sign" "$h")
+#printf "${result}\n"
+
+dst=`echo $result|sed 's/.*"dst":"\([^,}]*\)".*/\1/'`
+printf "${dst}\n"
